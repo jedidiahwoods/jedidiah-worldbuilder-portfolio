@@ -77,7 +77,7 @@ export function ProjectPage() {
             ))}
         </div>
 
-        <MediaFrame src={project.cover} alt={`${project.name} — cover`} />
+        <MediaFrame src={project.pageCover ?? project.cover} alt={`${project.name} — cover`} />
 
         {project.link && project.embed !== false && (
           <>

@@ -23,6 +23,8 @@ export interface Project {
   embed?: boolean
   /** one-liner shown under the orb title in the realm view */
   blurb?: string
+  /** media shown at the top of the project page, when different from the orb cover */
+  pageCover?: string
   stats: { label: string; value: string }[]
   description: string[]
   cover: string
@@ -53,8 +55,9 @@ export const projects: Project[] = [
       'The Master Set comes loaded: 38 acrylic standees, a six-panel hex board, 16 custom metal-cast coins, 28 dice, 24 double-sided character cards, 28 diplomacy cards, and wound markers. It funded on Kickstarter and is now launched and selling on Amazon and the web.',
     ],
     cover: '/media/board-game/cover.jpg',
+    pageCover: '/media/board-game/components.gif',
     gallery: [
-      '/media/board-game/components.gif',
+      '/media/board-game/cover.jpg',
       '/media/board-game/gallery-1.jpg',
       '/media/board-game/gallery-2.jpg',
       '/media/board-game/gallery-3.jpg',
