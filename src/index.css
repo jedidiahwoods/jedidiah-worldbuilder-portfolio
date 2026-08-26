@@ -226,68 +226,143 @@ button {
   animation: rise-in 1.4s var(--ease-epic) 0.5s both;
 }
 
-.realm-gates {
+/* Two realm planets creeping in from either side — pure ombre, no containers */
+
+.realm-half {
   position: absolute;
-  left: 0;
-  right: 0;
-  margin-inline: auto;
-  width: fit-content;
-  bottom: max(5vh, 34px);
+  top: 0;
+  bottom: 0;
+  width: 50%;
   display: flex;
-  gap: clamp(14px, 3vw, 34px);
-  animation: rise-in 1.4s var(--ease-epic) 0.9s both;
+  align-items: center;
+  cursor: pointer;
+  animation: fade-in 1.8s ease 0.7s both;
 }
 
-.realm-gate {
-  width: clamp(150px, 34vw, 300px);
-  padding: clamp(16px, 2.6vw, 28px) clamp(14px, 2.4vw, 26px);
-  text-align: center;
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  background: linear-gradient(180deg, rgba(10, 10, 28, 0.55), rgba(3, 3, 9, 0.75));
-  backdrop-filter: blur(10px);
-  transition: border-color 0.5s ease, box-shadow 0.5s ease, transform 0.5s var(--ease-epic);
+.realm-half.physical {
+  left: 0;
+  justify-content: flex-start;
+  padding-left: clamp(26px, 6.5vw, 110px);
+  text-align: left;
+  background: linear-gradient(90deg, rgba(200, 102, 31, 0.13), rgba(200, 102, 31, 0.04) 42%, transparent 68%);
 }
 
-.realm-gate .gate-kicker {
+.realm-half.digital {
+  right: 0;
+  justify-content: flex-end;
+  padding-right: clamp(26px, 6.5vw, 110px);
+  text-align: right;
+  background: linear-gradient(270deg, rgba(75, 92, 216, 0.15), rgba(75, 92, 216, 0.05) 42%, transparent 68%);
+}
+
+/* the planet limb itself */
+.realm-half::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: min(96vh, 760px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: transform 1.2s var(--ease-epic), box-shadow 1.2s ease, opacity 1.2s ease;
+}
+
+.realm-half.physical::before {
+  left: 0;
+  transform: translate(-74%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(26, 14, 6, 0.92) 58%,
+    rgba(46, 22, 8, 0.9) 78%,
+    rgba(122, 58, 18, 0.85) 90%,
+    rgba(255, 138, 48, 0.75) 96.5%,
+    rgba(255, 217, 168, 0.9) 98.6%,
+    rgba(255, 236, 210, 0) 100%
+  );
+  box-shadow:
+    0 0 90px 24px rgba(255, 138, 48, 0.22),
+    0 0 260px 70px rgba(200, 102, 31, 0.12);
+}
+
+.realm-half.digital::before {
+  right: 0;
+  transform: translate(74%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(7, 9, 26, 0.92) 58%,
+    rgba(14, 18, 52, 0.9) 78%,
+    rgba(48, 58, 160, 0.85) 90%,
+    rgba(89, 224, 255, 0.7) 96.5%,
+    rgba(216, 244, 255, 0.9) 98.6%,
+    rgba(216, 244, 255, 0) 100%
+  );
+  box-shadow:
+    0 0 90px 24px rgba(89, 224, 255, 0.18),
+    0 0 260px 70px rgba(75, 92, 216, 0.14);
+}
+
+.realm-half.physical:hover::before {
+  transform: translate(-64%, -50%);
+  box-shadow:
+    0 0 120px 34px rgba(255, 138, 48, 0.32),
+    0 0 300px 90px rgba(200, 102, 31, 0.16);
+}
+
+.realm-half.digital:hover::before {
+  transform: translate(64%, -50%);
+  box-shadow:
+    0 0 120px 34px rgba(89, 224, 255, 0.28),
+    0 0 300px 90px rgba(75, 92, 216, 0.2);
+}
+
+.half-label {
+  position: relative;
+  max-width: min(280px, 34vw);
+  animation: rise-in 1.4s var(--ease-epic) 1s both;
+}
+
+.half-kicker {
   font-size: 0.6rem;
   letter-spacing: 0.5em;
-  text-indent: 0.5em;
   text-transform: uppercase;
   color: var(--ink-faint);
-  margin-bottom: 0.9em;
+  margin-bottom: 1em;
 }
 
-.realm-gate .gate-name {
+.physical .half-kicker { text-indent: 0.5em; }
+
+.half-name {
   font-family: var(--font-display);
-  font-size: clamp(0.95rem, 2.4vw, 1.45rem);
-  letter-spacing: 0.18em;
-  text-indent: 0.18em;
+  font-size: clamp(1.15rem, 2.7vw, 1.9rem);
+  letter-spacing: 0.16em;
   margin-bottom: 0.7em;
+  transition: text-shadow 0.5s ease, color 0.5s ease;
 }
 
-.realm-gate .gate-desc {
-  font-size: clamp(0.68rem, 1.3vw, 0.82rem);
+.physical .half-name { color: var(--gold-hi); text-indent: 0.16em; }
+.digital .half-name { color: var(--cyan); }
+
+.realm-half.physical:hover .half-name { text-shadow: 0 0 26px rgba(255, 179, 107, 0.75); }
+.realm-half.digital:hover .half-name { text-shadow: 0 0 26px rgba(89, 224, 255, 0.75); }
+
+.half-desc {
+  font-size: clamp(0.7rem, 1.2vw, 0.84rem);
   letter-spacing: 0.08em;
   color: var(--ink-dim);
-  line-height: 1.7;
+  line-height: 1.8;
+  margin-bottom: 1.4em;
 }
 
-.realm-gate.physical:hover {
-  border-color: rgba(255, 179, 107, 0.6);
-  box-shadow: 0 0 40px rgba(255, 179, 107, 0.18), inset 0 0 30px rgba(255, 179, 107, 0.06);
-  transform: translateY(-4px);
+.half-enter {
+  font-size: 0.64rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  transition: color 0.5s ease, letter-spacing 0.5s ease;
 }
 
-.realm-gate.physical .gate-name { color: var(--gold-hi); }
-
-.realm-gate.digital:hover {
-  border-color: rgba(89, 224, 255, 0.55);
-  box-shadow: 0 0 40px rgba(89, 224, 255, 0.16), inset 0 0 30px rgba(139, 123, 255, 0.08);
-  transform: translateY(-4px);
-}
-
-.realm-gate.digital .gate-name { color: var(--cyan); }
+.realm-half.physical:hover .half-enter { color: var(--gold-hi); letter-spacing: 0.52em; }
+.realm-half.digital:hover .half-enter { color: var(--cyan); letter-spacing: 0.52em; }
 
 /* ---------- Realm views ---------- */
 
@@ -597,16 +672,24 @@ button {
 /* ---------- Mobile ---------- */
 
 @media (max-width: 640px) {
-  .realm-gates {
-    flex-direction: column;
-    width: min(320px, 88vw);
-    bottom: 4vh;
+  .realm-half {
+    align-items: flex-end;
+    padding-bottom: 9vh;
   }
 
-  .realm-gate {
-    width: 100%;
-    padding: 14px 18px;
+  .realm-half.physical { padding-left: 6vw; }
+  .realm-half.digital { padding-right: 6vw; }
+
+  .realm-half::before {
+    top: 78%;
+    width: min(64vh, 420px);
   }
+
+  .half-label { max-width: 42vw; }
+
+  .half-desc { display: none; }
+
+  .half-name { font-size: 1rem; }
 
   .site-title.hero { top: 30%; }
 

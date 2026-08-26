@@ -8,19 +8,25 @@ export function HeroOverlay() {
         Choose a realm to explore what has been made.
       </p>
 
-      <nav className="realm-gates" aria-label="Realms">
-        <Link to="/physical" className="realm-gate physical">
-          <div className="gate-kicker">Realm I</div>
-          <div className="gate-name">The Physical</div>
-          <div className="gate-desc">
-            Objects forged in the material world — games, gear, and a studio that makes things real.
+      <nav aria-label="Realms">
+        <Link to="/physical" className="realm-half physical">
+          <div className="half-label">
+            <div className="half-kicker">Realm I</div>
+            <div className="half-name">The Physical</div>
+            <div className="half-desc">
+              Objects forged in the material world — games, gear, and a studio that makes things real.
+            </div>
+            <div className="half-enter">Enter →</div>
           </div>
         </Link>
-        <Link to="/digital" className="realm-gate digital">
-          <div className="gate-kicker">Realm II</div>
-          <div className="gate-name">The Digital</div>
-          <div className="gate-desc">
-            Systems built from light and logic — apps and tools that live in the network.
+        <Link to="/digital" className="realm-half digital">
+          <div className="half-label">
+            <div className="half-kicker">Realm II</div>
+            <div className="half-name">The Digital</div>
+            <div className="half-desc">
+              Systems built from light and logic — apps and tools that live in the network.
+            </div>
+            <div className="half-enter">← Enter</div>
           </div>
         </Link>
       </nav>
