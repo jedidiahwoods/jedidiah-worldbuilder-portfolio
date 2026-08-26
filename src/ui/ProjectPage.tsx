@@ -46,6 +46,18 @@ export function ProjectPage() {
         <h1 className="project-name">{project.name}</h1>
         <p className="project-tagline">{project.tagline}</p>
 
+        {project.link && (
+          <a
+            className="project-link"
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ borderColor: accent, color: accent }}
+          >
+            Visit the live site →
+          </a>
+        )}
+
         <div className="project-meta">
           <div className="meta-cell">
             <div className="meta-label">Status</div>

@@ -29,12 +29,25 @@ export function DigitalRealm({
   const pulseRefs = useRef<THREE.Sprite[]>([])
   const items = projectsInRealm('digital')
 
-  // terminal positions for the three project nodes
-  const terminals: [number, number, number][] = [
-    [-4.6, 1.9, 0.6],
-    [4.7, 1.4, -0.4],
-    [0.4, -3.4, 1.0],
-  ]
+  // terminal positions ring the nucleus and adapt to however many
+  // digital projects exist in the data
+  const terminals = useMemo<[number, number, number][]>(() => {
+    const rand = mulberry32(7)
+    // leave a notch at the top of the ring so no node sits under the realm title
+    const gap = 1.1
+    const start = Math.PI / 2 + gap / 2
+    const span = Math.PI * 2 - gap
+    return items.map((_, i) => {
+      const a = start + (i / items.length) * span + rand() * 0.12
+      const r = 4.1 + (i % 2) * 0.85 + rand() * 0.3
+      return [
+        Math.cos(a) * r * 1.13,
+        Math.sin(a) * r * 0.58,
+        (rand() - 0.5) * 1.4,
+      ]
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items.length])
 
   const dendrites = useMemo<Dendrite[]>(() => {
     const rand = mulberry32(23)
@@ -72,11 +85,11 @@ export function DigitalRealm({
     }
     return out
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [terminals])
 
   const pulses = useRef(
-    Array.from({ length: 16 }, (_, i) => ({
-      dendrite: i % 12,
+    Array.from({ length: 18 }, (_, i) => ({
+      dendrite: i % 3,
       t: (i * 0.37) % 1,
       speed: 0.3 + ((i * 7919) % 100) / 250,
     }))

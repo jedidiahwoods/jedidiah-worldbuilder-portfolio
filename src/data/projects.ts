@@ -4,8 +4,8 @@
  * To add a project: add an entry here and drop its media into
  * /public/media/<slug>/  (cover + gallery). Covers can be .jpg, .png,
  * .webp, .mp4 or .webm — video is detected by extension automatically.
- * The current SVG files are styled placeholders; replace them with real
- * media and update the paths below.
+ * Digital projects use real screenshots of the live sites; physical
+ * projects still use styled placeholders until real photos arrive.
  */
 
 export type Realm = 'physical' | 'digital'
@@ -18,6 +18,7 @@ export interface Project {
   status: string
   year: string
   role: string
+  link?: string
   stats: { label: string; value: string }[]
   description: string[]
   cover: string
@@ -76,20 +77,22 @@ export const projects: Project[] = [
   },
   {
     slug: 'production-company',
-    name: 'Production Company',
-    tagline: 'My studio for making films and content. Cameras, crews, finished work.',
+    name: 'Awarded Goods',
+    tagline: 'My production company. Award-winning commercial content since 2020.',
     realm: 'physical',
     status: 'Active',
-    year: '2022 — Present',
+    year: '2020 — Present',
     role: 'Founder',
+    link: 'https://www.awardedgoods.com',
     stats: [
       { label: 'Status', value: 'Active' },
       { label: 'Focus', value: 'Film & Content' },
-      { label: 'Projects', value: 'Ongoing' },
+      { label: 'Since', value: '2020' },
     ],
     description: [
-      'This is the machine I built for getting stories shot and shipped. Gear, people, schedules, output.',
-      'Placeholder copy. Swap in the real details: the company name, notable projects, a reel, clients and collaborations.',
+      'Awarded Goods is the studio side of what I do. Crews, cameras, and commercial work for brands, produced start to finish out of Orange County, San Francisco, and Seattle.',
+      'The work includes a 7-part documentary series with Waymo that earned a two-time Webby Awards Honorary Mention.',
+      'Placeholder copy. Swap in more notable projects, a reel, and clients.',
     ],
     cover: '/media/production-company/cover.svg',
     gallery: [
@@ -102,75 +105,150 @@ export const projects: Project[] = [
   // ─────────────── THE DIGITAL REALM ───────────────
   {
     slug: 'remember',
-    name: 'Remember',
-    tagline: 'A journal app that makes writing down your day fast enough to actually happen.',
+    name: 'Remember Journal',
+    tagline: 'A fast and easy way to record and remember your life.',
     realm: 'digital',
     status: 'Live',
     year: '2024 — Present',
     role: 'Creator · Developer',
+    link: 'https://remember-journal.vercel.app',
     stats: [
       { label: 'Status', value: 'Live' },
-      { label: 'Platform', value: 'App' },
-      { label: 'Type', value: 'Journaling' },
+      { label: 'Type', value: 'Web App' },
+      { label: 'Login', value: 'Google' },
     ],
     description: [
       'I kept forgetting whole months of my life, so I built the thing that fixes it. Open it, type a memory, done. Future you gets to keep the day.',
-      'Placeholder copy. Swap in the real details: platforms, features, milestones, and a link to try it.',
+      'Placeholder copy. Swap in the real details: features, milestones, what is next.',
     ],
-    cover: '/media/remember/cover.svg',
-    gallery: [
-      '/media/remember/gallery-1.svg',
-      '/media/remember/gallery-2.svg',
-      '/media/remember/gallery-3.svg',
-    ],
+    cover: '/media/remember/cover.jpg',
+    gallery: ['/media/remember/gallery-1.jpg', '/media/remember/gallery-2.jpg'],
   },
   {
     slug: 'pay-your-friends',
-    name: 'Pay Your Friends',
-    tagline: 'Splitting money with friends without the awkward math. My answer to Splitwise.',
+    name: 'Pay Your Friends Please',
+    tagline: 'Cost-sharing like Splitwise. Split expenses and settle up with friends.',
     realm: 'digital',
     status: 'Live',
     year: '2024 — Present',
     role: 'Creator · Developer',
+    link: 'https://pay-your-friends-please.vercel.app',
     stats: [
       { label: 'Status', value: 'Live' },
-      { label: 'Platform', value: 'App' },
-      { label: 'Type', value: 'Fintech · Social' },
+      { label: 'Type', value: 'Web App' },
+      { label: 'Login', value: 'Google' },
     ],
     description: [
       'Somebody always covers the bill and somebody always forgets. This tracks who owes what and gets everyone squared up without a spreadsheet.',
-      'Placeholder copy. Swap in the real details: how it works, what makes it different, platforms, and a link to try it.',
+      'Placeholder copy. Swap in the real details: how it works and what makes it different.',
     ],
-    cover: '/media/pay-your-friends/cover.svg',
-    gallery: [
-      '/media/pay-your-friends/gallery-1.svg',
-      '/media/pay-your-friends/gallery-2.svg',
-      '/media/pay-your-friends/gallery-3.svg',
-    ],
+    cover: '/media/pay-your-friends/cover.jpg',
+    gallery: ['/media/pay-your-friends/gallery-1.jpg', '/media/pay-your-friends/gallery-2.jpg'],
   },
   {
     slug: 'weekly-budget',
-    name: 'Weekly Spending Budget',
-    tagline: 'The weekly system I actually use to know where my money goes.',
+    name: "Jed's Spending Budget",
+    tagline: 'A weekly customizable spending budget for anyone.',
     realm: 'digital',
-    status: 'In Use',
+    status: 'Live',
     year: '2023 — Present',
-    role: 'Creator',
+    role: 'Creator · Developer',
+    link: 'https://jeds-budget.vercel.app',
     stats: [
-      { label: 'Status', value: 'In Use' },
-      { label: 'Cadence', value: 'Weekly' },
-      { label: 'Type', value: 'Personal Finance' },
+      { label: 'Status', value: 'Live' },
+      { label: 'Type', value: 'Web App' },
+      { label: 'Login', value: 'Google' },
     ],
     description: [
       'Not a startup. Just a tool I use every single week: set the number, watch the week, adjust. It changed how I spend.',
-      'Placeholder copy. Swap in the real details: how it is built, what it tracks, and what it changed.',
+      'Placeholder copy. Swap in the real details: what it tracks and what it changed.',
     ],
-    cover: '/media/weekly-budget/cover.svg',
-    gallery: [
-      '/media/weekly-budget/gallery-1.svg',
-      '/media/weekly-budget/gallery-2.svg',
-      '/media/weekly-budget/gallery-3.svg',
+    cover: '/media/weekly-budget/cover.jpg',
+    gallery: ['/media/weekly-budget/gallery-1.jpg', '/media/weekly-budget/gallery-2.jpg'],
+  },
+  {
+    slug: 'haulrate',
+    name: 'Haulrate',
+    tagline: 'A refined brand site built for Haulrate, a Phoenix-based company.',
+    realm: 'digital',
+    status: 'Live',
+    year: '2025',
+    role: 'Design · Build',
+    link: 'https://haulrate.vercel.app',
+    stats: [
+      { label: 'Status', value: 'Live' },
+      { label: 'Type', value: 'Brand Site' },
+      { label: 'Client', value: 'Haulrate' },
     ],
+    description: [
+      'Client work: a clean, fast site built to load quick, look sharp, and get customers calling.',
+      'Placeholder copy. Swap in the real details: scope, stack, results.',
+    ],
+    cover: '/media/haulrate/cover.jpg',
+    gallery: ['/media/haulrate/gallery-1.jpg', '/media/haulrate/gallery-2.jpg'],
+  },
+  {
+    slug: 'awarded-goods-site',
+    name: 'awardedgoods.com',
+    tagline: 'Our own cinematic brand site, with a live animated carbon-fiber weave.',
+    realm: 'digital',
+    status: 'Live',
+    year: '2025',
+    role: 'Design · Build',
+    link: 'https://www.awardedgoods.com',
+    stats: [
+      { label: 'Status', value: 'Live' },
+      { label: 'Type', value: 'Brand Site' },
+      { label: 'Extras', value: 'Canvas FX · SEO' },
+    ],
+    description: [
+      'We built our own sites the way we build client work: story first, cinematic, with a carbon-fiber weave animated live on canvas.',
+      'Placeholder copy. Swap in the real details: stack, the weave effect, results.',
+    ],
+    cover: '/media/awarded-goods-site/cover.jpg',
+    gallery: ['/media/awarded-goods-site/gallery-1.jpg', '/media/awarded-goods-site/gallery-2.jpg'],
+  },
+  {
+    slug: 'sean-meyers-finder',
+    name: 'Sean Meyers Finder',
+    tagline: 'Speaker keyword search. Find exactly where a speaker said it.',
+    realm: 'digital',
+    status: 'Live',
+    year: '2025',
+    role: 'Creator · Developer',
+    link: 'https://sean-meyers-finder.vercel.app',
+    stats: [
+      { label: 'Status', value: 'Live' },
+      { label: 'Type', value: 'Search Tool' },
+      { label: 'Powered By', value: 'AI' },
+    ],
+    description: [
+      'Type a phrase, get the exact moment a speaker said it. Built for finding needles in hours of talks.',
+      'Placeholder copy. Swap in the real details: how the search works, the corpus, the stack.',
+    ],
+    cover: '/media/sean-meyers-finder/cover.jpg',
+    gallery: ['/media/sean-meyers-finder/gallery-1.jpg', '/media/sean-meyers-finder/gallery-2.jpg'],
+  },
+  {
+    slug: 'device-frame-studio',
+    name: 'Device Frame Studio',
+    tagline: 'Drop in screenshots or recordings, get them back inside a clean device frame.',
+    realm: 'digital',
+    status: 'Live',
+    year: '2025',
+    role: 'Creator · Developer',
+    link: 'https://device-frame-studio.vercel.app',
+    stats: [
+      { label: 'Status', value: 'Live' },
+      { label: 'Type', value: 'Creative Tool' },
+      { label: 'Handles', value: 'Media' },
+    ],
+    description: [
+      'Screenshots look better in hardware. This wraps your captures and recordings in device frames without opening any design software.',
+      'Placeholder copy. Swap in the real details: supported devices, export options.',
+    ],
+    cover: '/media/device-frame-studio/cover.jpg',
+    gallery: ['/media/device-frame-studio/gallery-1.jpg', '/media/device-frame-studio/gallery-2.jpg'],
   },
 ]
 

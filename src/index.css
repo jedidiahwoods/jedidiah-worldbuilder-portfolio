@@ -709,9 +709,27 @@ body:has(.realm-half.digital:hover) .site-title.hero {
   font-size: clamp(0.95rem, 2vw, 1.15rem);
   letter-spacing: 0.1em;
   color: var(--ink-dim);
-  margin-bottom: 2.4em;
+  margin-bottom: 1.8em;
   max-width: 640px;
   line-height: 1.8;
+}
+
+.project-link {
+  display: inline-block;
+  margin-bottom: 2.6em;
+  padding: 0.85em 1.7em;
+  border: 1px solid;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  text-transform: uppercase;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.project-link:hover {
+  box-shadow: 0 0 26px rgba(89, 224, 255, 0.25), inset 0 0 18px rgba(89, 224, 255, 0.08);
+  background: rgba(233, 231, 245, 0.04);
 }
 
 .project-meta {
