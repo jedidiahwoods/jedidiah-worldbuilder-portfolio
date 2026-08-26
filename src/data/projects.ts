@@ -19,6 +19,10 @@ export interface Project {
   year: string
   role: string
   link?: string
+  /** set false when the linked site refuses to load in an iframe */
+  embed?: boolean
+  /** one-liner shown under the orb title in the realm view */
+  blurb?: string
   stats: { label: string; value: string }[]
   description: string[]
   cover: string
@@ -31,11 +35,13 @@ export const projects: Project[] = [
     slug: 'board-game',
     name: 'Barnburners and Noblemen',
     tagline: 'A tactical tabletop wargame of strategy, diplomatic scheming, and chance. Over 15 years in the making.',
+    blurb: 'Launched and selling on Amazon and web',
     realm: 'physical',
     status: 'Launched',
     year: '2025',
     role: 'Co-Creator · Sinderstone Games',
     link: 'https://www.barnburnersandnoblemen.com',
+    embed: false,
     stats: [
       { label: 'Status', value: 'Launched' },
       { label: 'Selling On', value: 'Amazon · Web' },
@@ -48,6 +54,7 @@ export const projects: Project[] = [
     ],
     cover: '/media/board-game/cover.jpg',
     gallery: [
+      '/media/board-game/components.gif',
       '/media/board-game/gallery-1.jpg',
       '/media/board-game/gallery-2.jpg',
       '/media/board-game/gallery-3.jpg',
@@ -57,6 +64,7 @@ export const projects: Project[] = [
     slug: 'travel-backpack',
     name: 'Dundily Travel Bag',
     tagline: 'One travel bag to rule them all.',
+    blurb: 'One travel bag to rule them all · Prototype 4',
     realm: 'physical',
     status: 'In Development',
     year: '2023 — Present',
@@ -81,6 +89,7 @@ export const projects: Project[] = [
     slug: 'production-company',
     name: 'Awarded Goods Production Company',
     tagline: 'Photo and video production company servicing industry-defining brands like Waymo autonomous cars.',
+    blurb: 'Photo and video production for industry-defining brands like Waymo',
     realm: 'physical',
     status: 'Active',
     year: '2020 — Present',

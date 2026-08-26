@@ -107,6 +107,7 @@ export function ProjectNode({
             <div className="node-name" style={hovered ? { color: accent } : undefined}>
               {project.name}
             </div>
+            {project.blurb && <div className="node-blurb">{project.blurb}</div>}
             <div className="node-tag">{project.status}</div>
           </div>
         </Html>

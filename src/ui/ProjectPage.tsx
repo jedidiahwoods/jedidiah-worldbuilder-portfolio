@@ -79,6 +79,24 @@ export function ProjectPage() {
 
         <MediaFrame src={project.cover} alt={`${project.name} — cover`} />
 
+        {project.link && project.embed !== false && (
+          <>
+            <h2 className="project-section-title">Live Preview</h2>
+            <div className="media-frame live-frame">
+              <iframe
+                src={project.link}
+                title={`${project.name} — live site`}
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              />
+            </div>
+            <p className="live-hint">
+              This is the real, live site. Click around without leaving the page, or{' '}
+              <a href={project.link} target="_blank" rel="noopener noreferrer">open it full screen →</a>
+            </p>
+          </>
+        )}
+
         <div className="project-body">
           <h2 className="project-section-title">About</h2>
           {project.description.map((p, i) => (

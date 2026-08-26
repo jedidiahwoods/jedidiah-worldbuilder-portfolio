@@ -642,6 +642,16 @@ body:has(.realm-half.digital:hover) .site-title.hero {
   text-shadow: 0 0 16px rgba(3, 3, 9, 0.9), 0 2px 12px rgba(3, 3, 9, 0.9);
 }
 
+.node-label .node-blurb {
+  margin-top: 6px;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  color: var(--ink-dim);
+  max-width: 300px;
+  text-shadow: 0 0 12px rgba(3, 3, 9, 0.95), 0 2px 10px rgba(3, 3, 9, 0.95);
+}
+
 .node-label .node-tag {
   margin-top: 5px;
   font-size: 9px;
@@ -776,6 +786,37 @@ body:has(.realm-half.digital:hover) .site-title.hero {
   display: block;
   width: 100%;
   height: auto;
+}
+
+.live-frame {
+  aspect-ratio: 16 / 10;
+  margin-bottom: 1.2em;
+}
+
+.live-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #ffffff;
+}
+
+.live-hint {
+  text-align: center;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  margin-bottom: 3em;
+}
+
+.live-hint a {
+  color: var(--ink-dim);
+  border-bottom: 1px solid var(--line);
+  transition: color 0.3s ease;
+}
+
+.live-hint a:hover {
+  color: var(--ink);
 }
 
 .project-section-title {

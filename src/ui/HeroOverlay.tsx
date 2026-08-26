@@ -23,7 +23,6 @@ export function HeroOverlay() {
         <Link to="/physical" className="realm-half physical">
           <Planet />
           <div className="half-label">
-            <div className="half-kicker">Realm I</div>
             <div className="half-name">The Physical</div>
             <div className="half-desc">
               A board game, a travel backpack, a production company. Things that exist in the real world.
@@ -34,7 +33,6 @@ export function HeroOverlay() {
         <Link to="/digital" className="realm-half digital">
           <Planet />
           <div className="half-label">
-            <div className="half-kicker">Realm II</div>
             <div className="half-name">The Digital</div>
             <div className="half-desc">
               A journal app, a bill splitter, a weekly budget. Software I built because I needed it.
