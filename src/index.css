@@ -93,9 +93,7 @@ body:has(.realm-half.digital:hover) .site-title.hero {
 }
 
 .title-inner {
-  will-change: transform;
-  transform-style: preserve-3d;
-  transition: font-size 1.1s var(--ease-epic);
+  transition: font-size 1.1s var(--ease-epic), scale 0.45s var(--ease-epic);
 }
 
 .site-title.hero .title-inner {
@@ -113,36 +111,17 @@ body:has(.realm-half.digital:hover) .site-title.hero {
   letter-spacing: 0.12em;
   text-indent: 0.12em; /* balance the tracking */
   line-height: 1.15;
-  /* slow glare sweeping across the letters */
-  background: linear-gradient(
-    108deg,
-    #b9b4d6 0%,
-    #b9b4d6 38%,
-    #ffffff 47%,
-    #d4f4ff 50%,
-    #ffffff 53%,
-    #b9b4d6 62%,
-    #b9b4d6 100%
-  );
-  background-size: 260% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
+  /* invisible in the hero: the wire SVG paints the letters */
   color: transparent;
-  animation:
-    title-glare 8s linear infinite,
-    title-pulse 5.5s ease-in-out infinite;
   transition: letter-spacing 1.1s var(--ease-epic);
   white-space: nowrap;
   /* JEDIDIAH runs the same width as WORLD BUILDER: fewer letters, bigger */
   font-size: 1.8em;
 }
 
-/* intro: the name draws itself in stroke, then the solid letters take over */
-.site-title.intro h1 {
-  animation:
-    title-glare 8s linear infinite,
-    title-pulse 5.5s ease-in-out infinite,
-    title-appear 0.5s ease 0.85s both;
+/* the title grows a little on hover — no cursor-follow */
+.site-title.hero:hover .title-inner {
+  scale: 1.05;
 }
 
 .site-title.intro .title-rule,
@@ -150,61 +129,72 @@ body:has(.realm-half.digital:hover) .site-title.hero {
   animation: fade-in 0.9s ease 1.1s both;
 }
 
-.title-draw {
+/* ----- glowing wire letters ----- */
+
+.title-wire {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   overflow: visible;
   pointer-events: none;
-  filter: drop-shadow(0 0 8px rgba(139, 123, 255, 0.55));
-  animation: fade-out 0.45s ease 1.05s forwards;
+  animation: wire-pulse 5.5s ease-in-out infinite;
 }
 
-.title-draw text {
+.title-wire text {
   font-family: var(--font-display);
   font-size: 1.8em;
   letter-spacing: 0.12em;
   text-anchor: middle;
   dominant-baseline: central;
+  fill: none;
 }
 
-.title-draw tspan {
-  fill: none;
-  stroke: #e6e2f7;
-  stroke-width: 1.5;
+.wire-base {
+  stroke: #d9edff;
+  stroke-width: 1.4;
+}
+
+/* first load: the wires solder themselves together letter by letter */
+.site-title.intro .wire-base tspan {
   stroke-dasharray: 980;
   stroke-dashoffset: 980;
   animation: snake-draw 0.55s ease-out both;
+}
+
+/* a bright current runs endlessly along every letter's outline */
+.wire-spark {
+  stroke: #ffffff;
+  stroke-width: 2.2;
+  stroke-dasharray: 42 1360;
+  stroke-dashoffset: 1402;
+  opacity: 0.9;
+  animation: spark-run 7s linear 1.6s infinite;
+}
+
+@keyframes spark-run {
+  to { stroke-dashoffset: 0; }
 }
 
 @keyframes snake-draw {
   to { stroke-dashoffset: 0; }
 }
 
-@keyframes title-appear {
-  from { opacity: 0; }
-  to { opacity: 1; }
+@keyframes wire-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(89, 224, 255, 0.55)) drop-shadow(0 0 22px rgba(139, 123, 255, 0.35));
+  }
+  50% {
+    filter: drop-shadow(0 0 9px rgba(89, 224, 255, 0.85)) drop-shadow(0 0 34px rgba(139, 123, 255, 0.55));
+  }
 }
 
-@keyframes fade-out {
-  to { opacity: 0; }
-}
-
-@keyframes title-glare {
-  0% { background-position: 130% 0; }
-  100% { background-position: -130% 0; }
-}
-
-@keyframes title-pulse {
-  0%, 100% { filter: drop-shadow(0 0 16px rgba(139, 123, 255, 0.35)) drop-shadow(0 0 60px rgba(89, 224, 255, 0.12)); }
-  50% { filter: drop-shadow(0 0 30px rgba(139, 123, 255, 0.7)) drop-shadow(0 0 80px rgba(89, 224, 255, 0.28)); }
-}
-
+/* horizon line between the name and the title */
 .site-title .title-rule {
   height: 1px;
-  margin: 0.5em auto 0.45em;
-  background: linear-gradient(90deg, transparent, var(--ink-dim), transparent);
+  margin: 0.55em auto 0.5em;
+  background: linear-gradient(90deg, transparent, rgba(190, 240, 255, 0.85), transparent);
+  box-shadow: 0 0 14px rgba(89, 224, 255, 0.55);
   transition: width 1.1s var(--ease-epic), margin 1.1s var(--ease-epic), opacity 1.1s var(--ease-epic);
 }
 
@@ -214,7 +204,9 @@ body:has(.realm-half.digital:hover) .site-title.hero {
   letter-spacing: 0.12em;
   text-indent: 0.12em;
   line-height: 1.15;
-  color: var(--ink-dim);
+  color: transparent;
+  -webkit-text-stroke: 1.1px rgba(211, 238, 255, 0.85);
+  filter: drop-shadow(0 0 7px rgba(89, 224, 255, 0.45));
   text-transform: uppercase;
   transition: font-size 1.1s var(--ease-epic), letter-spacing 1.1s var(--ease-epic), opacity 1.1s var(--ease-epic);
   white-space: nowrap;
@@ -230,7 +222,7 @@ body:has(.realm-half.digital:hover) .site-title.hero {
 }
 
 .site-title.hero .title-rule {
-  width: min(340px, 60vw);
+  width: 96%;
 }
 
 .site-title.hero .subtitle {
@@ -242,9 +234,20 @@ body:has(.realm-half.digital:hover) .site-title.hero {
   transform: translate(-50%, 0);
 }
 
+/* banner: clean solid lettering, wires are a hero-only treatment */
 .site-title.banner h1 {
   letter-spacing: 0.18em;
   text-indent: 0.18em;
+  color: var(--ink);
+  text-shadow: 0 0 18px rgba(139, 123, 255, 0.45);
+}
+
+.site-title.banner .title-wire {
+  display: none;
+}
+
+.site-title.banner:hover .title-inner {
+  scale: 1.06;
 }
 
 .site-title.banner .title-rule {
@@ -256,6 +259,9 @@ body:has(.realm-half.digital:hover) .site-title.hero {
   font-size: 1em;
   letter-spacing: 0.18em;
   text-indent: 0.18em;
+  color: var(--ink-dim);
+  -webkit-text-stroke: 0;
+  filter: none;
 }
 
 /* ---------- Shared overlay chrome ---------- */

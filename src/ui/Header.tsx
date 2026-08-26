@@ -1,45 +1,19 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { bindCosmicPointer, cosmicPointer } from '../scene/pointer'
 
 const LETTERS = 'JEDIDIAH'.split('')
 
 /**
- * "JEDIDIAH — WORLD BUILDER": on first load the name draws itself in
- * stroke like a snake, then the solid glare-swept letters take over.
- * Front and center on the hero, docks into the banner while navigating.
- * Leans toward the cursor.
+ * "JEDIDIAH — WORLD BUILDER" as glowing wire text: stroked letterforms
+ * with electric sparks running along the outlines. Draws itself on in
+ * stroke on first load, grows slightly on hover, and docks into the
+ * banner while navigating. Static and centered otherwise.
  */
 export function Header() {
   const { pathname } = useLocation()
   const hero = pathname === '/'
   // play the draw-on intro only when the site loads on the hero
   const intro = useRef(pathname === '/').current
-  const inner = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    bindCosmicPointer()
-    const strength = hero ? 1 : 0.3
-    const cur = { x: 0, y: 0 }
-    let raf = 0
-
-    const tick = () => {
-      // cosmicPointer returns to (0,0) when the cursor leaves,
-      // so the title always eases back to perfect center
-      const tx = cosmicPointer.x
-      const ty = -cosmicPointer.y
-      cur.x += (tx - cur.x) * 0.12
-      cur.y += (ty - cur.y) * 0.12
-      if (inner.current) {
-        inner.current.style.transform =
-          `perspective(760px) rotateY(${cur.x * 7 * strength}deg) rotateX(${-cur.y * 5 * strength}deg)` +
-          ` translate(${cur.x * 12 * strength}px, ${cur.y * 7 * strength}px)`
-      }
-      raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [hero])
 
   return (
     <Link
@@ -47,20 +21,24 @@ export function Header() {
       className={`site-title ${hero ? 'hero' : 'banner'}${intro ? ' intro' : ''}`}
       aria-label="Jedidiah — World Builder, return home"
     >
-      <div className="title-inner" ref={inner}>
+      <div className="title-inner">
         <div className="title-stack">
           <h1>JEDIDIAH</h1>
-          {intro && (
-            <svg className="title-draw" aria-hidden="true">
-              <text x="50%" y="52%">
-                {LETTERS.map((letter, i) => (
-                  <tspan key={i} style={{ animationDelay: `${0.08 + i * 0.07}s` }}>
-                    {letter}
-                  </tspan>
-                ))}
-              </text>
-            </svg>
-          )}
+          <svg className="title-wire" aria-hidden="true">
+            <text className="wire-base" x="50%" y="52%">
+              {LETTERS.map((letter, i) => (
+                <tspan
+                  key={i}
+                  style={intro ? { animationDelay: `${0.08 + i * 0.07}s` } : undefined}
+                >
+                  {letter}
+                </tspan>
+              ))}
+            </text>
+            <text className="wire-spark" x="50%" y="52%">
+              JEDIDIAH
+            </text>
+          </svg>
         </div>
         <div className="title-rule" />
         <div className="subtitle">World Builder</div>
