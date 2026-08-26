@@ -70,7 +70,7 @@ export const projects: Project[] = [
       'Making a physical product means fabric samples, zipper debates, and factory emails at weird hours. I went through all of it to get the Dundily made.',
       'Placeholder copy. Swap in the real details: materials, capacity, what it fixes about other bags, and where to buy one.',
     ],
-    cover: '/media/travel-backpack/cover.svg',
+    cover: '/media/travel-backpack/cover.jpg',
     gallery: [
       '/media/travel-backpack/gallery-1.svg',
       '/media/travel-backpack/gallery-2.svg',
