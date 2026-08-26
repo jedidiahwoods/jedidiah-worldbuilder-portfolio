@@ -32,19 +32,19 @@ export const projects: Project[] = [
     name: 'Barnburners and Noblemen',
     tagline: 'A tactical tabletop wargame of strategy, diplomatic scheming, and chance. Over 15 years in the making.',
     realm: 'physical',
-    status: 'Sold Out',
+    status: 'Launched',
     year: '2025',
     role: 'Co-Creator · Sinderstone Games',
     link: 'https://www.barnburnersandnoblemen.com',
     stats: [
-      { label: 'Status', value: 'Sold Out' },
+      { label: 'Status', value: 'Launched' },
+      { label: 'Selling On', value: 'Amazon · Web' },
       { label: 'Players', value: '2 – 4' },
       { label: 'Standees', value: '38 Acrylic' },
-      { label: 'Master Set', value: '$90' },
     ],
     description: [
       'My brother and I started building this game when we were 10 and 12 years old. Fifteen years of brotherhood and imagination later, it is real: a death-match style wargame with a whole world of characters and lore behind it, published under our studio, Sinderstone Games.',
-      'The Master Set comes loaded: 38 acrylic standees, a six-panel hex board, 16 custom metal-cast coins, 28 dice, 24 double-sided character cards, 28 diplomacy cards, and wound markers. It funded on Kickstarter, and the first run sold out.',
+      'The Master Set comes loaded: 38 acrylic standees, a six-panel hex board, 16 custom metal-cast coins, 28 dice, 24 double-sided character cards, 28 diplomacy cards, and wound markers. It funded on Kickstarter and is now launched and selling on Amazon and the web.',
     ],
     cover: '/media/board-game/cover.jpg',
     gallery: [
@@ -56,19 +56,19 @@ export const projects: Project[] = [
   {
     slug: 'travel-backpack',
     name: 'Dundily Travel Bag',
-    tagline: 'A travel bag I designed for living out of one bag. Specced, sourced, produced.',
+    tagline: 'One travel bag to rule them all.',
     realm: 'physical',
-    status: 'Produced',
+    status: 'In Development',
     year: '2023 — Present',
     role: 'Founder · Product Designer',
     stats: [
-      { label: 'Status', value: 'Produced' },
+      { label: 'Status', value: 'In Development' },
+      { label: 'Stage', value: 'Prototype 4' },
       { label: 'Category', value: 'Travel Gear' },
-      { label: 'Iterations', value: 'Multiple' },
     ],
     description: [
-      'Making a physical product means fabric samples, zipper debates, and factory emails at weird hours. I went through all of it to get the Dundily made.',
-      'Placeholder copy. Swap in the real details: materials, capacity, what it fixes about other bags, and where to buy one.',
+      'One travel bag to rule them all. Making a physical product means fabric samples, zipper debates, and factory emails at weird hours, and the Dundily is deep in it: currently in development at prototype 4.',
+      'Placeholder copy. Swap in the real details: materials, capacity, what it fixes about other bags, and when it launches.',
     ],
     cover: '/media/travel-backpack/cover.jpg',
     gallery: [
@@ -80,7 +80,7 @@ export const projects: Project[] = [
   {
     slug: 'production-company',
     name: 'Awarded Goods Production Company',
-    tagline: 'My production company. Award-winning commercial content since 2020.',
+    tagline: 'Photo and video production company servicing industry-defining brands like Waymo autonomous cars.',
     realm: 'physical',
     status: 'Active',
     year: '2020 — Present',
