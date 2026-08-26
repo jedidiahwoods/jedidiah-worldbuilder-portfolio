@@ -16,8 +16,7 @@ export function HeroOverlay() {
   return (
     <div className="overlay">
       <p className="hero-tagline">
-        Half of what I make you can hold in your hands.
-        The other half lives on a screen.
+        Worlds you can touch and worlds you can experience.
       </p>
 
       <nav aria-label="Realms">
