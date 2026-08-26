@@ -25,7 +25,7 @@ export function HeroOverlay() {
         </Link>
       </nav>
 
-      <div className="cosmos-footer">jedidiah.ai · est. in the cosmos</div>
+      <div className="cosmos-footer">Established in the Cosmos</div>
     </div>
   )
 }

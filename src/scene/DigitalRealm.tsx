@@ -169,13 +169,14 @@ export function DigitalRealm({
         {/* ambient micro-web around the neuron */}
         <NeuronWeb
           seed={31}
-          radius={5.6}
-          nodeCount={46}
-          linkDistance={2.6}
+          radius={7.2}
+          nodeCount={64}
+          linkDistance={2.9}
           colors={['#8b7bff', '#59e0ff', '#4a9eff']}
           pulseColor="#a9ecff"
-          pulseCount={8}
+          pulseCount={10}
           parallax={0.05}
+          spread={[1.9, 1.0, 0.7]}
         />
       </group>
 

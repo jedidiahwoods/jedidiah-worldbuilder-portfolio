@@ -9,7 +9,7 @@ export function Starfield() {
 
   const { positions, colors, sizes } = useMemo(() => {
     const rand = mulberry32(42)
-    const count = 2600
+    const count = 3600
     const positions = new Float32Array(count * 3)
     const colors = new Float32Array(count * 3)
     const sizes = new Float32Array(count)
@@ -23,8 +23,8 @@ export function Starfield() {
     for (let i = 0; i < count; i++) {
       // wide slab of space covering hero + both realms
       positions[i * 3] = (rand() - 0.5) * 260
-      positions[i * 3 + 1] = (rand() - 0.5) * 90
-      positions[i * 3 + 2] = -6 - rand() * 90
+      positions[i * 3 + 1] = (rand() - 0.5) * 110
+      positions[i * 3 + 2] = -4 - rand() * 95
       const c = palette[Math.floor(rand() * palette.length)]
       const dim = 0.35 + rand() * 0.65
       colors[i * 3] = c.r * dim
@@ -50,6 +50,11 @@ export function Starfield() {
       { pos: [8, -4, -40], scale: 40, color: '#1b4a66', opacity: 0.26 },
       { pos: [0, 6, -55], scale: 52, color: '#2a1f5e', opacity: 0.3 },
       { pos: [-2, -7, -30], scale: 24, color: '#59306b', opacity: 0.16 },
+      // hero edges — so the corners never feel empty
+      { pos: [-17, 7, -16], scale: 18, color: '#31286b', opacity: 0.22 },
+      { pos: [17, -6, -15], scale: 17, color: '#173d54', opacity: 0.2 },
+      { pos: [15, 8, -20], scale: 15, color: '#4a2547', opacity: 0.18 },
+      { pos: [-15, -8, -18], scale: 16, color: '#1b4a66', opacity: 0.18 },
       // physical realm: ember nebula
       { pos: [-62, 5, -30], scale: 38, color: '#6b3a1c', opacity: 0.3 },
       { pos: [-56, -6, -42], scale: 44, color: '#4a2547', opacity: 0.26 },

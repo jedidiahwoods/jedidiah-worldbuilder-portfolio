@@ -24,7 +24,7 @@ npm run dev
 ## Design system
 
 - Palette: deep-space ink `#030309`, starlight `#e9e7f5`, ember gold `#ffb36b` (physical), electric cyan `#59e0ff` / violet `#8b7bff` (digital)
-- Type: **Cinzel** (display) + **Jost** (body)
+- Type: **Julius Sans One** (display) + **Jost** (body)
 - Mood: grand, epic, premium — additive glow, thin 1px lines, generous letterspacing
 
 ## Deploy

@@ -3,6 +3,7 @@ import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { glowTexture, mulberry32 } from './textures'
 import { ProjectNode } from './ProjectNode'
+import { NeuronWeb } from './NeuronWeb'
 import { projectsInRealm } from '../data/projects'
 
 const EARTH_R = 2.3
@@ -201,6 +202,20 @@ export function PhysicalRealm({
           visible={active}
         />
       ))}
+
+      {/* ambient ember constellation reaching to the screen edges */}
+      <NeuronWeb
+        seed={17}
+        radius={7.4}
+        nodeCount={54}
+        linkDistance={3.0}
+        colors={['#ffb36b', '#ffd9a8', '#8b5bb0']}
+        pulseColor="#ffd9a8"
+        pulseCount={6}
+        parallax={0.06}
+        spread={[1.9, 1.0, 0.7]}
+        position={[0, 0, -3]}
+      />
     </group>
   )
 }

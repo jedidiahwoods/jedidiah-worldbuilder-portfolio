@@ -39,13 +39,45 @@ const CAMERA_TARGETS: Record<Mode, { pos: THREE.Vector3; look: THREE.Vector3 }> 
   },
 }
 
+/**
+ * The world loops like a cylinder: flying right past the Digital Realm
+ * wraps around to approach the Physical Realm from the left, so the
+ * realm-switch arrows never backtrack. The seam sits in empty starfield
+ * at |x| = WRAP_X, where the teleport is invisible.
+ */
+const WRAP_X = 135
+
 function CameraRig({ mode }: { mode: Mode }) {
   const look = useRef(new THREE.Vector3(0, 0, 0))
+  const prevMode = useRef<Mode>(mode)
+  const warping = useRef(false)
+
+  if (prevMode.current !== mode) {
+    // digital → physical continues rightward and wraps around the cosmos
+    warping.current = prevMode.current === 'digital' && mode === 'physical'
+    prevMode.current = mode
+  }
 
   useFrame(({ camera, pointer }, dt) => {
     const target = CAMERA_TARGETS[mode]
-    const damp = 1 - Math.exp(-dt * 1.8)
 
+    if (warping.current) {
+      // phase 1: accelerate right toward the seam
+      const out = new THREE.Vector3(WRAP_X + 10, target.pos.y, target.pos.z)
+      const damp = 1 - Math.exp(-dt * 2.6)
+      camera.position.lerp(out, damp)
+      look.current.lerp(new THREE.Vector3(WRAP_X + 10, 0, 0), damp)
+      camera.lookAt(look.current)
+      if (camera.position.x > WRAP_X - 8) {
+        // seam: jump across the wrap in empty space, still moving right
+        camera.position.x -= 2 * WRAP_X
+        look.current.x -= 2 * WRAP_X
+        warping.current = false
+      }
+      return
+    }
+
+    const damp = 1 - Math.exp(-dt * 1.8)
     // flight toward the realm, with a gentle pointer-driven drift
     const desired = target.pos
       .clone()
@@ -73,8 +105,8 @@ export function Scene() {
         <fog attach="fog" args={['#030309', 40, 160]} />
         <Suspense fallback={null}>
           <Starfield />
-          {/* hero: the cosmic neuron web where universe meets mind */}
-          <NeuronWeb />
+          {/* hero: the cosmic neuron web where universe meets mind — spread to the screen edges */}
+          <NeuronWeb radius={7.4} nodeCount={110} linkDistance={3.2} spread={[2.0, 1.0, 0.9]} pulseCount={18} />
           <PhysicalRealm center={PHYSICAL_CENTER} active={mode === 'physical'} />
           <DigitalRealm center={DIGITAL_CENTER} active={mode === 'digital'} />
         </Suspense>

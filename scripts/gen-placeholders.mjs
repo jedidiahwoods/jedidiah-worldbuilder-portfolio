@@ -41,7 +41,7 @@ function svg({ w, h, name, glyph, theme, label, seed }) {
     return `<circle cx="${x}" cy="${y}" r="${r}" fill="#e9e7f5" opacity="${o}"/>`
   }).join('\n    ')
 
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" font-family="Georgia, 'Times New Roman', serif">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" font-family="'Trebuchet MS', 'Segoe UI', sans-serif">
   <defs>
     <radialGradient id="bg" cx="50%" cy="42%" r="80%">
       <stop offset="0%" stop-color="${theme.b}"/>

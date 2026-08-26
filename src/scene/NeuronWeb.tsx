@@ -25,6 +25,7 @@ export function NeuronWeb({
   pulseColor = '#bfe9ff',
   pulseCount = 14,
   parallax = 0.22,
+  spread = [1.4, 0.75, 0.9] as [number, number, number],
 }) {
   const group = useRef<THREE.Group>(null!)
   const pulseRefs = useRef<THREE.Sprite[]>([])
@@ -39,9 +40,9 @@ export function NeuronWeb({
       const r = radius * (0.35 + 0.65 * Math.cbrt(rand()))
       nodes.push(
         new THREE.Vector3(
-          r * Math.sin(phi) * Math.cos(theta) * 1.4,
-          r * Math.sin(phi) * Math.sin(theta) * 0.75,
-          r * Math.cos(phi) * 0.9
+          r * Math.sin(phi) * Math.cos(theta) * spread[0],
+          r * Math.sin(phi) * Math.sin(theta) * spread[1],
+          r * Math.cos(phi) * spread[2]
         )
       )
     }
@@ -60,6 +61,7 @@ export function NeuronWeb({
       linePositions.set([nodes[b].x, nodes[b].y, nodes[b].z], k * 6 + 3)
     })
     return { nodes, nodeColors, links, linePositions }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seed, radius, nodeCount, linkDistance, colors])
 
   const nodeGeom = useMemo(() => {
