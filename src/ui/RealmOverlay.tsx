@@ -17,7 +17,7 @@ export function RealmOverlay({ realm }: { realm: Realm }) {
       <div className={`realm-chrome ${realm}`}>
         <div className="realm-kicker">{realm === 'physical' ? 'Realm I' : 'Realm II'}</div>
         <h2>{realmTitle(realm)}</h2>
-        <div className="realm-hint">Select a world to enter</div>
+        <div className="realm-hint">Pick a world</div>
       </div>
     </div>
   )

@@ -49,6 +49,9 @@ const WRAP_X = 135
 
 function CameraRig({ mode }: { mode: Mode }) {
   const look = useRef(new THREE.Vector3(0, 0, 0))
+  const base = useRef<THREE.Vector3 | null>(null)
+  const drift = useRef(new THREE.Vector3())
+  const driftTarget = useRef(new THREE.Vector3())
   const prevMode = useRef<Mode>(mode)
   const warping = useRef(false)
 
@@ -59,18 +62,25 @@ function CameraRig({ mode }: { mode: Mode }) {
   }
 
   useFrame(({ camera, pointer }, dt) => {
+    if (!base.current) base.current = camera.position.clone()
     const target = CAMERA_TARGETS[mode]
+
+    // pointer drift tracks the cursor much faster than the realm flight
+    const fast = 1 - Math.exp(-dt * 9)
+    driftTarget.current.set(pointer.x * 0.9, pointer.y * 0.6, 0)
+    drift.current.lerp(driftTarget.current, fast)
 
     if (warping.current) {
       // phase 1: accelerate right toward the seam
       const out = new THREE.Vector3(WRAP_X + 10, target.pos.y, target.pos.z)
       const damp = 1 - Math.exp(-dt * 2.6)
-      camera.position.lerp(out, damp)
+      base.current.lerp(out, damp)
       look.current.lerp(new THREE.Vector3(WRAP_X + 10, 0, 0), damp)
+      camera.position.copy(base.current).add(drift.current)
       camera.lookAt(look.current)
-      if (camera.position.x > WRAP_X - 8) {
+      if (base.current.x > WRAP_X - 8) {
         // seam: jump across the wrap in empty space, still moving right
-        camera.position.x -= 2 * WRAP_X
+        base.current.x -= 2 * WRAP_X
         look.current.x -= 2 * WRAP_X
         warping.current = false
       }
@@ -78,12 +88,9 @@ function CameraRig({ mode }: { mode: Mode }) {
     }
 
     const damp = 1 - Math.exp(-dt * 1.8)
-    // flight toward the realm, with a gentle pointer-driven drift
-    const desired = target.pos
-      .clone()
-      .add(new THREE.Vector3(pointer.x * 0.9, pointer.y * 0.6, 0))
-    camera.position.lerp(desired, damp)
+    base.current.lerp(target.pos, damp)
     look.current.lerp(target.look, damp)
+    camera.position.copy(base.current).add(drift.current)
     camera.lookAt(look.current)
   })
 

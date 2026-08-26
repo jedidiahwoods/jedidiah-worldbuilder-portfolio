@@ -68,7 +68,7 @@ export function ProjectPage() {
         <MediaFrame src={project.cover} alt={`${project.name} — cover`} />
 
         <div className="project-body">
-          <h2 className="project-section-title">The Story</h2>
+          <h2 className="project-section-title">About</h2>
           {project.description.map((p, i) => (
             <p key={i}>{p}</p>
           ))}

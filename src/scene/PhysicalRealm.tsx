@@ -102,7 +102,7 @@ export function PhysicalRealm({
     earth.current.rotation.x = THREE.MathUtils.lerp(
       earth.current.rotation.x,
       active ? -pointer.y * 0.12 : 0,
-      0.03
+      0.09
     )
     orbits.current.rotation.y = t * 0.02
   })

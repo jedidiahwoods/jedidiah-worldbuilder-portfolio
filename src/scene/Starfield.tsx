@@ -39,8 +39,8 @@ export function Starfield() {
     const t = clock.elapsedTime
     // slow cosmic drift + gentle pointer parallax
     group.current.rotation.z = Math.sin(t * 0.02) * 0.02
-    group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, pointer.x * -1.2, 0.02)
-    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, pointer.y * -0.8, 0.02)
+    group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, pointer.x * -1.2, 0.07)
+    group.current.position.y = THREE.MathUtils.lerp(group.current.position.y, pointer.y * -0.8, 0.07)
   })
 
   const nebulae = useMemo(

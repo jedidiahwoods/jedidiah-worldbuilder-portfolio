@@ -29,7 +29,7 @@ export const projects: Project[] = [
   {
     slug: 'board-game',
     name: 'The Board Game',
-    tagline: 'A world you can hold — strategy, story and tabletop craft, designed and produced from scratch.',
+    tagline: 'A strategy game I designed and playtested from scratch. Cardboard first, real production next.',
     realm: 'physical',
     status: 'In Development',
     year: '2024 — Present',
@@ -40,8 +40,8 @@ export const projects: Project[] = [
       { label: 'Prototypes', value: '3 Rounds' },
     ],
     description: [
-      'Every great world starts with rules. This board game began as sketches and cut-up cardboard and has grown through multiple prototype rounds into a complete tabletop experience — mechanics, art direction, and physical production all built from the ground up.',
-      'Placeholder copy — replace with the real story: what the game is about, how it plays, what stage production is in, and where people can follow or buy it.',
+      'This started as sketches and cut-up cardboard on my kitchen table. Three prototype rounds later, it plays like something you would pull off a shelf.',
+      'Placeholder copy. Swap in the real story: what the game is called, how it plays, where production stands, and where to get it.',
     ],
     cover: '/media/board-game/cover.svg',
     gallery: [
@@ -53,7 +53,7 @@ export const projects: Project[] = [
   {
     slug: 'travel-backpack',
     name: 'Travel Backpack',
-    tagline: 'A carry system engineered for people who move through the world — designed, sourced and produced as a physical product.',
+    tagline: 'A backpack I designed for living out of one bag. Specced, sourced, produced.',
     realm: 'physical',
     status: 'Produced',
     year: '2023 — Present',
@@ -64,8 +64,8 @@ export const projects: Project[] = [
       { label: 'Iterations', value: 'Multiple' },
     ],
     description: [
-      'Building a physical product means building a supply chain, a spec sheet, and a thousand small decisions about zippers, straps and fabric. The travel backpack is a complete product journey — from idea to design to manufacturing.',
-      'Placeholder copy — replace with the real details: materials, capacity, what problem it solves, production story, and where to get one.',
+      'Making a physical product means fabric samples, zipper debates, and factory emails at weird hours. I went through all of it to get this thing made.',
+      'Placeholder copy. Swap in the real details: materials, capacity, what it fixes about other bags, and where to buy one.',
     ],
     cover: '/media/travel-backpack/cover.svg',
     gallery: [
@@ -77,7 +77,7 @@ export const projects: Project[] = [
   {
     slug: 'production-company',
     name: 'Production Company',
-    tagline: 'A studio for bringing stories into the real world — film, content and creative production.',
+    tagline: 'My studio for making films and content. Cameras, crews, finished work.',
     realm: 'physical',
     status: 'Active',
     year: '2022 — Present',
@@ -88,8 +88,8 @@ export const projects: Project[] = [
       { label: 'Projects', value: 'Ongoing' },
     ],
     description: [
-      'A production company is a machine for making things exist — crews, gear, schedules, and stories, assembled into finished work. This is the studio arm of the portfolio: the entity through which creative projects get produced.',
-      'Placeholder copy — replace with the real details: the company name, notable projects, reel links, and clients or collaborations.',
+      'This is the machine I built for getting stories shot and shipped. Gear, people, schedules, output.',
+      'Placeholder copy. Swap in the real details: the company name, notable projects, a reel, clients and collaborations.',
     ],
     cover: '/media/production-company/cover.svg',
     gallery: [
@@ -103,7 +103,7 @@ export const projects: Project[] = [
   {
     slug: 'remember',
     name: 'Remember',
-    tagline: 'A journal app for capturing life before it fades — memory, made durable.',
+    tagline: 'A journal app that makes writing down your day fast enough to actually happen.',
     realm: 'digital',
     status: 'Live',
     year: '2024 — Present',
@@ -114,8 +114,8 @@ export const projects: Project[] = [
       { label: 'Type', value: 'Journaling' },
     ],
     description: [
-      'Remember is a journaling app built around a simple conviction: the days you don’t write down disappear. It makes capturing a memory fast enough to actually happen, and turns entries into something you’ll want to return to.',
-      'Placeholder copy — replace with the real details: platforms, features, user numbers or milestones, and a link to try it.',
+      'I kept forgetting whole months of my life, so I built the thing that fixes it. Open it, type a memory, done. Future you gets to keep the day.',
+      'Placeholder copy. Swap in the real details: platforms, features, milestones, and a link to try it.',
     ],
     cover: '/media/remember/cover.svg',
     gallery: [
@@ -127,7 +127,7 @@ export const projects: Project[] = [
   {
     slug: 'pay-your-friends',
     name: 'Pay Your Friends',
-    tagline: 'A Splitwise alternative — splitting money between friends without the friction.',
+    tagline: 'Splitting money with friends without the awkward math. My answer to Splitwise.',
     realm: 'digital',
     status: 'Live',
     year: '2024 — Present',
@@ -138,8 +138,8 @@ export const projects: Project[] = [
       { label: 'Type', value: 'Fintech · Social' },
     ],
     description: [
-      'Money between friends should be simple. Pay Your Friends is a shared-expense app built as a cleaner, friendlier alternative to Splitwise — track who owes what, settle up, stay friends.',
-      'Placeholder copy — replace with the real details: how it works, what makes it different, platforms, and a link to try it.',
+      'Somebody always covers the bill and somebody always forgets. This tracks who owes what and gets everyone squared up without a spreadsheet.',
+      'Placeholder copy. Swap in the real details: how it works, what makes it different, platforms, and a link to try it.',
     ],
     cover: '/media/pay-your-friends/cover.svg',
     gallery: [
@@ -151,7 +151,7 @@ export const projects: Project[] = [
   {
     slug: 'weekly-budget',
     name: 'Weekly Spending Budget',
-    tagline: 'A personal system for knowing exactly where the money goes — one week at a time.',
+    tagline: 'The weekly system I actually use to know where my money goes.',
     realm: 'digital',
     status: 'In Use',
     year: '2023 — Present',
@@ -162,8 +162,8 @@ export const projects: Project[] = [
       { label: 'Type', value: 'Personal Finance' },
     ],
     description: [
-      'The simplest tool in the digital realm, and maybe the most used: a weekly spending budget that turns money from a source of anxiety into a system with a dashboard.',
-      'Placeholder copy — replace with the real details: how it’s built, what it tracks, and what it’s changed about how you spend.',
+      'Not a startup. Just a tool I use every single week: set the number, watch the week, adjust. It changed how I spend.',
+      'Placeholder copy. Swap in the real details: how it is built, what it tracks, and what it changed.',
     ],
     cover: '/media/weekly-budget/cover.svg',
     gallery: [
