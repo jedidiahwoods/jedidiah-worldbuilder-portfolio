@@ -29,7 +29,7 @@ export const projects: Project[] = [
   // ─────────────── THE PHYSICAL REALM ───────────────
   {
     slug: 'board-game',
-    name: 'The Board Game',
+    name: 'Barnburners and Noblemen',
     tagline: 'A strategy game I designed and playtested from scratch. Cardboard first, real production next.',
     realm: 'physical',
     status: 'In Development',
@@ -41,8 +41,8 @@ export const projects: Project[] = [
       { label: 'Prototypes', value: '3 Rounds' },
     ],
     description: [
-      'This started as sketches and cut-up cardboard on my kitchen table. Three prototype rounds later, it plays like something you would pull off a shelf.',
-      'Placeholder copy. Swap in the real story: what the game is called, how it plays, where production stands, and where to get it.',
+      'Barnburners and Noblemen started as sketches and cut-up cardboard on my kitchen table. Three prototype rounds later, it plays like something you would pull off a shelf.',
+      'Placeholder copy. Swap in the real story: how it plays, where production stands, and where to get it.',
     ],
     cover: '/media/board-game/cover.svg',
     gallery: [
@@ -53,8 +53,8 @@ export const projects: Project[] = [
   },
   {
     slug: 'travel-backpack',
-    name: 'Travel Backpack',
-    tagline: 'A backpack I designed for living out of one bag. Specced, sourced, produced.',
+    name: 'Dundily Travel Bag',
+    tagline: 'A travel bag I designed for living out of one bag. Specced, sourced, produced.',
     realm: 'physical',
     status: 'Produced',
     year: '2023 — Present',
@@ -65,7 +65,7 @@ export const projects: Project[] = [
       { label: 'Iterations', value: 'Multiple' },
     ],
     description: [
-      'Making a physical product means fabric samples, zipper debates, and factory emails at weird hours. I went through all of it to get this thing made.',
+      'Making a physical product means fabric samples, zipper debates, and factory emails at weird hours. I went through all of it to get the Dundily made.',
       'Placeholder copy. Swap in the real details: materials, capacity, what it fixes about other bags, and where to buy one.',
     ],
     cover: '/media/travel-backpack/cover.svg',
@@ -77,7 +77,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'production-company',
-    name: 'Awarded Goods',
+    name: 'Awarded Goods Production Company',
     tagline: 'My production company. Award-winning commercial content since 2020.',
     realm: 'physical',
     status: 'Active',
@@ -94,7 +94,7 @@ export const projects: Project[] = [
       'The work includes a 7-part documentary series with Waymo that earned a two-time Webby Awards Honorary Mention.',
       'Placeholder copy. Swap in more notable projects, a reel, and clients.',
     ],
-    cover: '/media/production-company/cover.svg',
+    cover: '/media/production-company/cover.jpg',
     gallery: [
       '/media/production-company/gallery-1.svg',
       '/media/production-company/gallery-2.svg',
