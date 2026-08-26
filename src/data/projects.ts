@@ -232,6 +232,27 @@ export const projects: Project[] = [
     gallery: ['/media/sean-meyers-finder/gallery-1.jpg', '/media/sean-meyers-finder/gallery-2.jpg'],
   },
   {
+    slug: 'googl-ticker',
+    name: 'GOOGL Ticker',
+    tagline: 'A live Alphabet stock dashboard: quotes, news sentiment, and the catalysts that could move it.',
+    realm: 'digital',
+    status: 'Live',
+    year: '2025',
+    role: 'Creator · Developer',
+    link: 'https://googl-ticker.vercel.app',
+    stats: [
+      { label: 'Status', value: 'Live' },
+      { label: 'Type', value: 'Market Dashboard' },
+      { label: 'Powered By', value: 'Finnhub · AI' },
+    ],
+    description: [
+      'One stock, watched properly. Live GOOGL and GOOG quotes, a price chart, news scored for sentiment by a language model, and a catalyst board tracking what could move the stock and which way.',
+      'Placeholder copy. Swap in the real details: why Alphabet, how the scoring works.',
+    ],
+    cover: '/media/googl-ticker/cover.jpg',
+    gallery: ['/media/googl-ticker/gallery-1.jpg', '/media/googl-ticker/gallery-2.jpg'],
+  },
+  {
     slug: 'device-frame-studio',
     name: 'Device Frame Studio',
     tagline: 'Drop in screenshots or recordings, get them back inside a clean device frame.',
