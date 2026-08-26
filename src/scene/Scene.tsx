@@ -1,7 +1,8 @@
-import { Suspense, useMemo, useRef } from 'react'
+import { Suspense, useEffect, useMemo, useRef } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { useLocation } from 'react-router-dom'
+import { bindCosmicPointer, cosmicPointer } from './pointer'
 import { Starfield } from './Starfield'
 import { NeuronWeb } from './NeuronWeb'
 import { PhysicalRealm } from './PhysicalRealm'
@@ -61,8 +62,9 @@ function CameraRig({ mode }: { mode: Mode }) {
     prevMode.current = mode
   }
 
-  useFrame(({ camera, pointer, size }, dt) => {
+  useFrame(({ camera, size }, dt) => {
     if (!base.current) base.current = camera.position.clone()
+    const pointer = cosmicPointer
     const raw = CAMERA_TARGETS[mode]
     // pull back on narrow screens so the realm layouts fit
     const portrait = size.width / size.height < 0.9
@@ -106,6 +108,10 @@ function CameraRig({ mode }: { mode: Mode }) {
 /** The persistent universe. Lives behind every route. */
 export function Scene() {
   const mode = useMode()
+
+  useEffect(() => {
+    bindCosmicPointer()
+  }, [])
 
   return (
     <div id="canvas-root">

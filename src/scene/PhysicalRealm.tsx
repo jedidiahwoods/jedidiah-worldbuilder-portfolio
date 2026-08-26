@@ -2,6 +2,7 @@ import { useMemo, useRef } from 'react'
 import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { glowTexture, mulberry32 } from './textures'
+import { cosmicPointer } from './pointer'
 import { ProjectNode } from './ProjectNode'
 import { NeuronWeb } from './NeuronWeb'
 import { projectsInRealm } from '../data/projects'
@@ -105,8 +106,9 @@ export function PhysicalRealm({
         return [Math.cos(a) * 4.4, Math.sin(a * 1.7) * 1.5, Math.sin(a) * 2.2]
       })
 
-  useFrame(({ clock, pointer }) => {
+  useFrame(({ clock }) => {
     const t = clock.elapsedTime
+    const pointer = cosmicPointer
     earth.current.rotation.y = t * 0.06
     earth.current.rotation.x = THREE.MathUtils.lerp(
       earth.current.rotation.x,

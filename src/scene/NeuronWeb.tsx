@@ -2,6 +2,7 @@ import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { glowTexture, mulberry32 } from './textures'
+import { cosmicPointer } from './pointer'
 
 interface Pulse {
   a: number
@@ -83,8 +84,9 @@ export function NeuronWeb({
     })
   }
 
-  useFrame(({ clock, pointer }, dt) => {
+  useFrame(({ clock }, dt) => {
     const t = clock.elapsedTime
+    const pointer = cosmicPointer
     group.current.rotation.y = t * 0.03 + pointer.x * parallax
     group.current.rotation.x = Math.sin(t * 0.05) * 0.06 - pointer.y * parallax * 0.7
     // breathing

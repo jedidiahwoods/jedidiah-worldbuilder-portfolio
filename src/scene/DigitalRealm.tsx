@@ -19,6 +19,7 @@ const coreFrag = /* glsl */ `
     gl_FragColor = vec4(col, 1.0);
   }
 `
+import { cosmicPointer } from './pointer'
 import { ProjectNode } from './ProjectNode'
 import { NeuronWeb } from './NeuronWeb'
 import { projectsInRealm } from '../data/projects'
@@ -129,8 +130,9 @@ export function DigitalRealm({
     }))
   )
 
-  useFrame(({ clock, pointer }) => {
+  useFrame(({ clock }) => {
     const t = clock.elapsedTime
+    const pointer = cosmicPointer
     group.current.rotation.y = Math.sin(t * 0.07) * 0.1 + (active ? pointer.x * 0.1 : 0)
     group.current.rotation.x = Math.cos(t * 0.05) * 0.05 - (active ? pointer.y * 0.08 : 0)
     const beat = 1 + Math.pow(Math.max(0, Math.sin(t * 1.6)), 6) * 0.12

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { bindCosmicPointer, cosmicPointer } from '../scene/pointer'
 
 const LETTERS = 'JEDIDIAH'.split('')
 
@@ -17,18 +18,18 @@ export function Header() {
   const inner = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    bindCosmicPointer()
     const strength = hero ? 1 : 0.3
     const cur = { x: 0, y: 0 }
-    const tgt = { x: 0, y: 0 }
     let raf = 0
 
-    const onMove = (e: PointerEvent) => {
-      tgt.x = (e.clientX / window.innerWidth) * 2 - 1
-      tgt.y = (e.clientY / window.innerHeight) * 2 - 1
-    }
     const tick = () => {
-      cur.x += (tgt.x - cur.x) * 0.14
-      cur.y += (tgt.y - cur.y) * 0.14
+      // cosmicPointer returns to (0,0) when the cursor leaves,
+      // so the title always eases back to perfect center
+      const tx = cosmicPointer.x
+      const ty = -cosmicPointer.y
+      cur.x += (tx - cur.x) * 0.12
+      cur.y += (ty - cur.y) * 0.12
       if (inner.current) {
         inner.current.style.transform =
           `perspective(760px) rotateY(${cur.x * 7 * strength}deg) rotateX(${-cur.y * 5 * strength}deg)` +
@@ -36,12 +37,8 @@ export function Header() {
       }
       raf = requestAnimationFrame(tick)
     }
-    window.addEventListener('pointermove', onMove)
     raf = requestAnimationFrame(tick)
-    return () => {
-      cancelAnimationFrame(raf)
-      window.removeEventListener('pointermove', onMove)
-    }
+    return () => cancelAnimationFrame(raf)
   }, [hero])
 
   return (

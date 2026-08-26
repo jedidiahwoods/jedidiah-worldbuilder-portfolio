@@ -2,6 +2,7 @@ import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { starTexture, glowTexture, mulberry32 } from './textures'
+import { cosmicPointer } from './pointer'
 
 /** Deep-space starfield + nebula clouds spanning the whole world. */
 export function Starfield() {
@@ -35,8 +36,9 @@ export function Starfield() {
     return { positions, colors, sizes }
   }, [])
 
-  useFrame(({ clock, pointer }) => {
+  useFrame(({ clock }) => {
     const t = clock.elapsedTime
+    const pointer = cosmicPointer
     // slow cosmic drift + gentle pointer parallax
     group.current.rotation.z = Math.sin(t * 0.02) * 0.02
     group.current.position.x = THREE.MathUtils.lerp(group.current.position.x, pointer.x * -1.2, 0.07)
