@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { glowTexture, mulberry32 } from './textures'
 
@@ -56,10 +56,21 @@ export function DigitalRealm({
   )
   const items = projectsInRealm('digital')
 
-  // terminal positions ring the nucleus and adapt to however many
-  // digital projects exist in the data
+  const { size } = useThree()
+  const portrait = size.width / size.height < 0.9
+
+  // terminal positions ring the nucleus on wide screens and zigzag down
+  // a column on narrow ones, so every project stays visible
   const terminals = useMemo<[number, number, number][]>(() => {
     const rand = mulberry32(7)
+    if (portrait) {
+      const n = Math.max(items.length - 1, 1)
+      return items.map((_, i) => [
+        (i % 2 === 0 ? -1 : 1) * 1.3,
+        3.2 - (i * 6.7) / n,
+        (rand() - 0.5) * 1.0,
+      ])
+    }
     // leave a notch at the top of the ring so no node sits under the realm title
     const gap = 1.1
     const start = Math.PI / 2 + gap / 2
@@ -67,14 +78,10 @@ export function DigitalRealm({
     return items.map((_, i) => {
       const a = start + (i / items.length) * span + rand() * 0.12
       const r = 4.1 + (i % 2) * 0.85 + rand() * 0.3
-      return [
-        Math.cos(a) * r * 1.13,
-        Math.sin(a) * r * 0.58,
-        (rand() - 0.5) * 1.4,
-      ]
+      return [Math.cos(a) * r * 1.13, Math.sin(a) * r * 0.58, (rand() - 0.5) * 1.4]
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items.length])
+  }, [items.length, portrait])
 
   const dendrites = useMemo<Dendrite[]>(() => {
     const rand = mulberry32(23)

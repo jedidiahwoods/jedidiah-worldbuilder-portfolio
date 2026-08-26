@@ -15,6 +15,8 @@ function Planet() {
 export function HeroOverlay() {
   return (
     <div className="overlay">
+      <div className="hero-eclipse" aria-hidden="true" />
+
       <p className="hero-tagline">
         Worlds you can touch and worlds you can experience.
       </p>
@@ -24,9 +26,6 @@ export function HeroOverlay() {
           <Planet />
           <div className="half-label">
             <div className="half-name">The Physical</div>
-            <div className="half-desc">
-              A board game, a travel backpack, a production company. Things that exist in the real world.
-            </div>
             <div className="half-enter">Enter →</div>
           </div>
         </Link>
@@ -34,9 +33,6 @@ export function HeroOverlay() {
           <Planet />
           <div className="half-label">
             <div className="half-name">The Digital</div>
-            <div className="half-desc">
-              A journal app, a bill splitter, a weekly budget. Software I built because I needed it.
-            </div>
             <div className="half-enter">← Enter</div>
           </div>
         </Link>

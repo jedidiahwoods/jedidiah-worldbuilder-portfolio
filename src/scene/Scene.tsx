@@ -61,9 +61,15 @@ function CameraRig({ mode }: { mode: Mode }) {
     prevMode.current = mode
   }
 
-  useFrame(({ camera, pointer }, dt) => {
+  useFrame(({ camera, pointer, size }, dt) => {
     if (!base.current) base.current = camera.position.clone()
-    const target = CAMERA_TARGETS[mode]
+    const raw = CAMERA_TARGETS[mode]
+    // pull back on narrow screens so the realm layouts fit
+    const portrait = size.width / size.height < 0.9
+    const target =
+      portrait && mode !== 'hero'
+        ? { pos: raw.pos.clone().setZ(raw.pos.z * 1.32), look: raw.look }
+        : raw
 
     // pointer drift tracks the cursor much faster than the realm flight
     const fast = 1 - Math.exp(-dt * 9)

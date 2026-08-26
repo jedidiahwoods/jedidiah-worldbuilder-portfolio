@@ -1,5 +1,5 @@
 import { useMemo, useRef } from 'react'
-import { useFrame } from '@react-three/fiber'
+import { useFrame, useThree } from '@react-three/fiber'
 import * as THREE from 'three'
 import { glowTexture, mulberry32 } from './textures'
 import { ProjectNode } from './ProjectNode'
@@ -89,12 +89,21 @@ export function PhysicalRealm({
     []
   )
 
-  // project node ring positions (slightly elliptical, staggered heights)
+  const { size } = useThree()
+  const portrait = size.width / size.height < 0.9
+
+  // project node ring positions; stacked vertically on narrow screens
   const nodeAngles = [-0.5, 0.7, 2.4]
-  const nodePositions: [number, number, number][] = items.map((_, i) => {
-    const a = nodeAngles[i % nodeAngles.length]
-    return [Math.cos(a) * 4.4, Math.sin(a * 1.7) * 1.5, Math.sin(a) * 2.2]
-  })
+  const nodePositions: [number, number, number][] = portrait
+    ? [
+        [1.0, 3.0, 1.5],
+        [-1.1, 0.6, 2.3],
+        [0.1, -3.1, 1.2],
+      ].slice(0, items.length) as [number, number, number][]
+    : items.map((_, i) => {
+        const a = nodeAngles[i % nodeAngles.length]
+        return [Math.cos(a) * 4.4, Math.sin(a * 1.7) * 1.5, Math.sin(a) * 2.2]
+      })
 
   useFrame(({ clock, pointer }) => {
     const t = clock.elapsedTime
@@ -109,6 +118,7 @@ export function PhysicalRealm({
 
   return (
     <group position={center}>
+      <group scale={portrait ? 0.72 : 1}>
       <group ref={earth}>
         {/* globe body */}
         <mesh>
@@ -192,6 +202,7 @@ export function PhysicalRealm({
             />
           </mesh>
         ))}
+      </group>
       </group>
       {items.map((p, i) => (
         <ProjectNode
