@@ -25,6 +25,8 @@ export interface Project {
   blurb?: string
   /** media shown at the top of the project page, when different from the orb cover */
   pageCover?: string
+  /** path to a self-contained interactive 3D page, embedded on the project page */
+  model?: string
   stats: { label: string; value: string }[]
   description: string[]
   cover: string
@@ -56,6 +58,7 @@ export const projects: Project[] = [
     ],
     cover: '/media/board-game/cover.jpg',
     pageCover: '/media/board-game/components.gif',
+    model: '/media/board-game/enemier-3d.html',
     gallery: [
       '/media/board-game/cover.jpg',
       '/media/board-game/gallery-1.jpg',

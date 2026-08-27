@@ -79,6 +79,20 @@ export function ProjectPage() {
 
         <MediaFrame src={project.pageCover ?? project.cover} alt={`${project.name} — cover`} />
 
+        {project.model && (
+          <>
+            <h2 className="project-section-title">Explore in 3D</h2>
+            <div className="media-frame live-frame">
+              <iframe
+                src={project.model}
+                title={`${project.name} — interactive 3D`}
+                loading="lazy"
+              />
+            </div>
+            <p className="live-hint">A world from the game, live in your browser. Drag to look around.</p>
+          </>
+        )}
+
         {project.link && project.embed !== false && (
           <>
             <h2 className="project-section-title">Live Preview</h2>
